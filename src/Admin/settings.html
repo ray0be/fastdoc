@@ -16,7 +16,7 @@
         <div class="checkbox">
             <label><input id="captcha_box" type="checkbox" name="recaptcha" onchange="$('#captcha_vars').toggle('Bind');" {if !empty($recaptcha.public)}checked{/if}> Enable reCAPTCHA verification (require Google account)</label>
         </div>
-        <div id="captcha_vars" style="display:{if !empty($recaptcha.public)}block{else}none{/if};">
+        <div id="captcha_vars" style="display:{if !empty($config.recaptcha.public)}block{else}none{/if};">
             <p>You can get your public and private keys here&nbsp;: <a href="https://www.google.com/recaptcha" target="_blank">reCAPTCHA Google</a></p>
             <div class="form-group">
                 <label for="public_key"><span style="color:green;">Public</span> key</label>

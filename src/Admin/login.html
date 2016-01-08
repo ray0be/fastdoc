@@ -12,7 +12,7 @@
     </div>
 
     {if !empty($recaptcha.public)}
-    <div class="g-recaptcha" data-sitekey="{$recaptcha.public}"></div>
+    <div class="g-recaptcha" data-sitekey="{$config.recaptcha.public}"></div>
     <noscript><p class="text-danger">You have to allow Javascript in your browser settings to see the captcha system.</p></noscript>
     {/if}
     
