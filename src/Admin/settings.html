@@ -14,7 +14,7 @@
     <p>You can protect this platform against <a target="_blank" href="https://en.wikipedia.org/wiki/Brute-force_attack">bruteforce attacks</a> by adding a captcha verification. When trying to log into the admin zone, this will ask to check a box (or to select similar pictures, or to retype letters) in order to verify that you're not a robot.</p>
     <fieldset class="bordered">
         <div class="checkbox">
-            <label><input id="captcha_box" type="checkbox" name="recaptcha" onchange="$('#captcha_vars').toggle('Bind');" {if !empty($recaptcha.public)}checked{/if}> Enable reCAPTCHA verification (require Google account)</label>
+            <label><input id="captcha_box" type="checkbox" name="recaptcha" onchange="$('#captcha_vars').toggle('Bind');" {if !empty($config.recaptcha.public)}checked{/if}> Enable reCAPTCHA verification (require Google account)</label>
         </div>
         <div id="captcha_vars" style="display:{if !empty($config.recaptcha.public)}block{else}none{/if};">
             <p>You can get your public and private keys here&nbsp;: <a href="https://www.google.com/recaptcha" target="_blank">reCAPTCHA Google</a></p>
