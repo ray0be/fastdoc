@@ -11,7 +11,7 @@
         <input class="form-control" type="password" id="password" name="password" value="">
     </div>
 
-    {if !empty($recaptcha.public)}
+    {if !empty($config.recaptcha.public)}
     <div class="g-recaptcha" data-sitekey="{$config.recaptcha.public}"></div>
     <noscript><p class="text-danger">You have to allow Javascript in your browser settings to see the captcha system.</p></noscript>
     {/if}
