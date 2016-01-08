@@ -1,0 +1,23 @@
+<p>Hey! I hope you'll have fun using <strong>fastdoc</strong> !</p>
+<p>Here are some information to help you configure your documentation.</p>
+<ul>
+<li>Login to admin area</li>
+<li>Forgotten password</li>
+<li>General settings</li>
+<li>Secure login form</li>
+<li>Disable edition mode</li>
+</ul>
+<h2>Login to admin area</h2>
+<p>There is a small link in the footer, in&nbsp;the "Powered by" line. <em>(edit)</em> You can access the login form by clicking on this link. You have chosen the password when you first launched fastdoc.</p>
+<h2>Forgotten password</h2>
+<p>If you forget your password, don't worry.</p>
+<p>You can reset your password at any time by emptying the <strong>app/password.txt</strong> file. Then, when you will load a page, it will ask you for a new password.</p>
+<h2>General settings</h2>
+<p>There is a settings page where you can edit admin password, doc title, copyright section, Google Analytics options... Just click the "Settings" link in the header bar.</p>
+<h2>Secure login form</h2>
+<p>If you want to keep enabled the edition mode, you have to secure the platform to avoid bruteforce attacks.</p>
+<p>First, choose a strong&nbsp;admin password. <span style="color: red;"><strong>It's very very important</strong></span>. Don't use&nbsp;"qwerty", for example.</p>
+<p>Then, I highly recommand you to use the <strong>Google reCAPTCHA system</strong> to be sure you&nbsp;have a secured admin area. You can enter your public and private keys in the Settings&nbsp;page.</p>
+<h2>Disable edition mode</h2>
+<p>Once you have finished your documentation, it would be great to disable the admin area access by simply changing the value in <strong>app/edit.txt</strong> file.</p>
+<p>Default value is "<strong><span style="color: green;">true</span></strong>", that allows you access the login form&nbsp;and edit pages, but you can change it to "<strong><span style="color: red;">false</span></strong>" or any other value.</p>

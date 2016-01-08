@@ -1,0 +1,15 @@
+<div id="topbar"></div>
+<header>
+    <div class="container">
+        <a href="{$root}" class="brand">{if !empty($config.document)}{$config.document}{else}fastdoc{/if}</a>
+
+        {block "page-header-nav"}
+        <ul class="header-nav">
+            {if $admin}
+                <li><a href="{$root}settings"><span class="glyphicon glyphicon-cog"></span>&nbsp;Settings</a></li>
+                <li><a href="{$root}logout"><span class="glyphicon glyphicon-off"></span>&nbsp;Logout</a></li>
+            {/if}
+        </ul>
+        {/block}
+    </div>
+</header>

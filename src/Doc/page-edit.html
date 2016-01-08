@@ -1,0 +1,64 @@
+{extends "layout.html"}
+
+{block "page-content"}
+<div>
+    <div style="display:inline-block;width:49%;"><a href="{eval $data.page_view_url}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancel</a></div>
+    <div style="display:inline-block;width:49%;text-align:right;"><a href="#" class="saveDocLink btn btn-info">Save this page <span class="glyphicon glyphicon-floppy-save"></span></a></div>
+</div>
+
+<h1>{$data.page_title}</h1>
+<hr>
+<div id="pageEditContent">{$data.page_content}</div>
+
+<div style="text-align:right;margin-top:15px;">
+    <a class="saveDocLink btn btn-info">Save this page <span class="glyphicon glyphicon-floppy-save"></span></a>
+</div>
+{/block}
+
+{block "script" append}
+{if $admin}
+    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>
+    $(function() {
+        $('a.saveDocLink').click(function() {
+            post("{eval $data.page_edit_url}", {
+                "pageContent": tinyMCE.get('pageEditContent').getContent()
+            });
+        });
+        tinymce.init({
+            selector:'#pageEditContent',
+            inline: true,
+            automatic_uploads: false,
+            images_upload_base_path: '/web/uploads/',
+            plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table contextmenu paste'
+            ],
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            relative_urls: false
+        });
+    });
+    function post(path, params)
+    {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", path);
+
+        for(var key in params) {
+            if(params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+             }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+    </script>
+{/if}
+{/block}

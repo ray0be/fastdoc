@@ -1,0 +1,55 @@
+{extends "layout.html"}
+
+{block "page-content"}
+<h1>Edit titles</h1>
+
+<div id="edit_titles">
+    <form method="post" action="{$root}edit-nav">
+        {foreach $docfiles as $categoryUrl => $categoryArray}
+            <fieldset class="colored">
+                <legend>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="list[{$categoryUrl}][_title]" value="{$categoryArray.title|escape}">
+                        <div class="input-group-addon"><a onclick="removeCategory('{$categoryUrl}');" style="color:red;" title="Remove this category"><span class="glyphicon glyphicon-remove"></span></a></div>
+                    </div>
+                </legend>
+                <input type="hidden" id="categoryPageNumber_{$categoryUrl}" value="{count($categoryArray.pages)}">
+                {foreach $categoryArray.pages as $pageUrl => $pageTitle}
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="list[{$categoryUrl}][{$pageUrl}]" value="{$pageTitle|escape}">
+                            <span class="input-group-addon"><a onclick="removePage('{$categoryUrl}','{$pageUrl}');" style="color:red;" title="Remove this page"><span class="glyphicon glyphicon-remove"></span></a></span>
+                        </div>
+                    </div>
+                {/foreach}
+            </fieldset>
+        {/foreach}
+        <p class="text-center"><button type="submit" class="btn btn-primary btn-lg">Save titles</button></p>
+    </form>
+</div>
+{/block}
+
+{block "script" append}
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+<script>
+function removeCategory(cat)
+{
+    var nb = parseInt($('#categoryPageNumber_' + cat).val());
+
+    if (nb > 0) {
+        alert("You can't remove this category because it contains pages.");
+    }
+    else
+    {
+        window.location.href = "{$root}edit-nav/remove-category/" + cat;
+    }
+}
+
+function removePage(cat, page)
+{
+    if (confirm("Are you sure you want to definitely remove this page ?")) {
+        window.location.href = "{$root}edit-nav/remove-page/" + cat + "/" + page;
+    }
+}
+</script>
+{/block}

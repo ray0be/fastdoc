@@ -1,0 +1,26 @@
+{extends "layout.html"}
+
+{block "page-content"}
+<h1>Log in</h1>
+
+<p>Please enter your password to edit documents.</p>
+
+<form method="post" action="">
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" id="password" name="password" value="">
+    </div>
+
+    {if !empty($recaptcha.public)}
+    <div class="g-recaptcha" data-sitekey="{$recaptcha.public}"></div>
+    <noscript><p class="text-danger">You have to allow Javascript in your browser settings to see the captcha system.</p></noscript>
+    {/if}
+    
+    <input type="submit" class="btn btn-success" value="Log in">
+</form>
+
+{/block}
+
+{block "body" append}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+{/block}

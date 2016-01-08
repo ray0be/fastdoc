@@ -1,0 +1,395 @@
+@import "compass";
+/*
+  #################
+    screen.scss
+  #################
+*/
+
+/* ///////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+       _____                __  _        
+      / ____|              / _|(_)       
+     | |      ___   _ __  | |_  _   __ _ 
+     | |     / _ \ | '_ \ |  _|| | / _` |
+     | |____| (_) || | | || |  | || (_| |
+      \_____|\___/ |_| |_||_|  |_| \__, |
+                                    __/ |
+                                   |___/ 
+//////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////// */
+
+/*########################################
+    Media Queries
+########################################*/
+$xs : "max-width:767px";
+$sm : "min-width:768px";
+$md : "min-width:992px";
+$lg : "min-width:1200px";
+
+/*########################################
+    Colors
+########################################*/
+$red   : rgb(240, 95, 95);
+$green : rgb(100, 200, 50);
+$blue  : rgb(1, 95, 240);
+
+/*########################################
+    Widths
+########################################*/
+$page_width : 1080px;
+
+/*########################################
+    Heights
+########################################*/
+$header_height : 70px;
+
+/* ///////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+      _____         _            
+     |  __ \       | |           
+     | |__) |_   _ | |  ___  ___ 
+     |  _  /| | | || | / _ \/ __|
+     | | \ \| |_| || ||  __/\__ \
+     |_|  \_\\__,_||_| \___||___/
+                                 
+//////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////// */
+
+.container {
+    max-width: $page_width;
+    margin: 0 auto;
+}
+
+a { text-decoration: none !important; }
+
+a, label { cursor:pointer; }
+
+a.btn { color:white !important; }
+a.btn-default { color:black !important; }
+
+p { line-height: 1.5; margin: 10px 0 20px; }
+
+p code {
+    background: #f0f2f1;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+
+abbr { border:none !important; }
+
+pre { margin:0 0 20px 0; border:0; }
+
+code, kbd, pre, samp { font-family: source-code-pro, monospace; font-size: 14px; }
+
+blockquote {
+    color: #fff;
+    border-left:none;
+    border-radius: 3px;
+    margin: 10px 0 20px;
+    padding: 10px 15px;
+    
+    p:last-child { margin: 0; }
+    a { color: #fff; }
+    code { background:#fff; }
+}
+
+fieldset.colored {
+    border:1px solid #fff;
+    padding:15px 15px;
+    margin:15px 0;
+    @include border-radius(5px);
+
+    legend {
+        width:auto;
+        border:0;
+        padding:0 15px;
+
+        .input-group {
+            width:400px;
+
+            @media ($xs) { width:300px; }
+        }
+
+        a.button-circle {
+            font-size:16px;
+            padding:5px;
+            margin:0 6px;
+            border:1px solid #626262;
+            @include border-radius(15px);
+        }
+    }
+}
+
+fieldset.bordered {
+    border:1px solid #dee0df;
+    padding:5px 15px;
+    @include border-radius(5px);
+}
+
+/* ///////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+      _____              _               
+     |  __ \            (_)              
+     | |  | |  ___  ___  _   __ _  _ __  
+     | |  | | / _ \/ __|| | / _` || '_ \ 
+     | |__| ||  __/\__ \| || (_| || | | |
+     |_____/  \___||___/|_| \__, ||_| |_|
+                             __/ |       
+                            |___/        
+//////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////// */
+
+body {
+    color: #525252;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*########################################
+    Header
+########################################*/
+#topbar {
+    height:10px;
+    width:100%;
+}
+
+header {
+    height: $header_height;
+    width: 100%;
+    border-bottom: 1px solid #dee0df;
+
+    &:after { content: ""; display: table; clear: both; }
+    a.brand {
+        color: #e74430;
+        font-size: 21px;
+        float: left;
+        width: 250px;
+        line-height: $header_height;
+        margin-left:15px;
+        letter-spacing:1.5px;
+    }
+}
+ul.header-nav {
+    display: inline-block;
+    list-style: none;
+    margin: 0 0 0 190px;
+    padding: 0;
+    float:right;
+    
+    @media ($xs) { display: none; }
+}
+ul.header-nav > li { display: inline-block; margin: 0 15px; }
+ul.header-nav > li > a { line-height: $header_height; font-size: 16px; color: #525252; }
+
+/*########################################
+    Wide menu (xsmall devices)
+########################################*/
+#menu-wide {
+    position: fixed;
+    top:0;left:0;
+    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    height: 100%;
+    padding-top:90px;
+    display: none;
+    z-index: 999000;
+    overflow:auto;
+
+    ul.header-nav {
+        display:block;
+        float:none;
+        margin:0;
+        text-align:center;
+    }
+    .sidebar {
+        display:block;
+        width:100%;
+        text-align:center;
+        color:#C8C8C8;
+    }
+}
+#menu-wide-button {
+    position: fixed;
+    background: #000;
+    top:20px;
+    right:20px;
+    width:50px;
+    height:50px;
+    font-size:30px;
+    z-index: 999999;
+    text-align:center;
+    line-height:50px;
+    display:none;
+    @include border-radius(4px);
+
+    @media ($xs) { display:block; }
+}
+
+/*########################################
+    Sidebar
+########################################*/
+.sidebar {
+    border-right: 1px solid #f0f2f1;
+    width: 200px;
+    float: left;
+    padding: 25px;
+
+    a { line-height: 1.5; }
+    a:hover { color: #e74430; }
+
+    @media ($xs) { display:none; }
+    @media ($sm) { display:block; }
+    @media ($md) { padding: 35px; width: 250px; }
+}
+.sidebar > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar > ul > li {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0 0 10px;
+    margin: 25px 0 0px;
+}
+.sidebar > ul > li > ul {
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+    padding: 10px 0 0 0;
+    font-size: 14px;
+}
+
+/*########################################
+    Page
+########################################*/
+article {
+    padding: 25px 25px 50px 50px;
+    margin-left: 200px;
+
+    ul { font-size: 14px; }
+    p { font-size: 14px; line-height: 1.65; }
+    li > ul { font-size: 15px; font-weight: 400; list-style: none; }
+    
+    h1 {
+        font-size: 48px;
+        font-weight: 200;
+        margin-top:0;
+        margin-bottom:35px;
+    }
+    h2 {
+        font-size: 30px;
+        font-weight: 400;
+        position: relative;
+        margin:30px 0;
+    }
+    h3 { font-size: 24px; font-weight: 400; }
+    h4 { font-size: 16px; font-weight: 700; }
+
+    a { text-decoration: underline; }
+    a:hover { color: #f1362f; }
+    blockquote a:hover { color: #fcd8d6; }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 14px;
+
+        th, td { border: 1px solid #dee0df; padding: 10px; text-align: left; }
+        th { font-size: 16px; }
+    }
+
+    #pageEditContent {
+        border:1px dotted #4A4A4A;
+        padding:0 5px;
+    }
+
+    div label.special {
+        display:inline-block;
+        width:45%;
+        padding:25px 10px;
+        text-align:center;
+        border:3px solid #7A7A7A;
+        @include border-radius(5px);
+    }
+
+    @media ($xs) {
+        margin-left:0px;
+        padding:15px 30px 30px;
+    }
+    @media ($md) {
+        margin-left:300px;
+
+        h1 { margin-top:25px; }
+    }
+}
+
+/*########################################
+    Footer
+########################################*/
+footer {
+    background: #fafafa;
+    padding: 15px;
+    text-align: center;
+    clear:both;
+}
+footer p {
+    color: #aeaeae;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+footer p a { color: #525252; }
+footer p.credits a { color: #c8c8c8; }
+
+/*########################################
+    Colors
+########################################*/
+body {
+    &.red {
+        #topbar { @include background-image(linear-gradient(to right, lighten($red, 40%), $red)); }
+        a { color:$red; }
+        a:hover { color:lighten($red, 20%); }
+        p code { color:$red; }
+        header ul.header-nav > li > a:hover { color: $red; }
+        header .brand:hover { color:lighten($red, 20%); }
+        blockquote { background:lighten($red, 15%); }
+        fieldset.colored { border-color:$red; }
+        fieldset.colored legend { color:$red; }
+        article div label.special:hover { background:lighten($red, 25%); }
+        article div label.special.selected { background:lighten($red, 10%); color:white; }
+    }
+    &.green {
+        #topbar { @include background-image(linear-gradient(to right, lighten($green, 40%), $green)); }
+        a { color:$green; }
+        a:hover { color:lighten($green, 20%); }
+        p code { color:$green; }
+        header ul.header-nav > li > a:hover { color: $green; }
+        header .brand:hover { color:lighten($green, 20%); }
+        blockquote { background:lighten($green, 15%); }
+        fieldset.colored { border-color:$green; }
+        fieldset.colored legend { color:$green; }
+        article div label.special:hover { background:lighten($green, 35%); }
+        article div label.special.selected { background:lighten($green, 20%); }
+    }
+    &.blue {
+        #topbar { @include background-image(linear-gradient(to right, lighten($blue, 40%), $blue)); }
+        a { color:$blue; }
+        a:hover { color:lighten($blue, 20%); }
+        p code { color:$blue; }
+        header ul.header-nav > li > a:hover { color: $blue; }
+        header .brand:hover { color:lighten($blue, 20%); }
+        blockquote { background:lighten($blue, 15%); }
+        fieldset.colored { border-color:$blue; }
+        fieldset.colored legend { color:$blue; }
+        article div label.special:hover { background:lighten($blue, 35%); }
+        article div label.special.selected { background:lighten($blue, 20%); color:white; }
+    }
+}

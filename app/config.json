@@ -1,0 +1,20 @@
+{
+    "document": "Documentation",
+    "author": {
+        "name": "",
+        "url": ""
+    },
+    "page": {
+        "lang": "en",
+        "charset": "utf8",
+        "title": "Documentation",
+        "description": "",
+        "keywords": "",
+        "maincolor": "blue"
+    },
+    "recaptcha": {
+        "public": "",
+        "private": ""
+    },
+    "analytics": ""
+}

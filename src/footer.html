@@ -1,0 +1,7 @@
+<footer>
+{if !empty($config.author.name)}
+    <p>&copy; {if !empty($config.author.url)}<a href="{$config.author.url}">{$config.author.name}</a>{else}{$config.author.name}{/if}</p>
+{/if}
+
+<p class="credits">Powered by <a href="{$app.homepage}">{$app.name} {$app.version}</a>{if $edit && !$admin}&nbsp;(<a href="{$root}login" rel="nofollow" title="Connexion">edit</a>){/if}</p>
+</footer>

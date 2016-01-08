@@ -1,0 +1,100 @@
+{extends "layout.html"}
+
+{block "page-content"}
+<h1>Settings</h1>
+
+<p>You can edit your settings here, just complete the form below.</p>
+
+<form method="post" action="">
+    <h2>Account security</h2>
+    <h4>Password</h4>
+    <p><a href="{$root}password">Click here to change your admin password.</a></p>
+    <p>If you forget your password, just empty the <em>app/password.txt</em> file, it will display the "Installation page" with the prompt for the admin password. (you won't loose your already-written pages)</p>
+    <h4>Login captcha</h4>
+    <p>You can protect this platform against <a target="_blank" href="https://en.wikipedia.org/wiki/Brute-force_attack">bruteforce attacks</a> by adding a captcha verification. When trying to log into the admin zone, this will ask to check a box (or to select similar pictures, or to retype letters) in order to verify that you're not a robot.</p>
+    <fieldset class="bordered">
+        <div class="checkbox">
+            <label><input id="captcha_box" type="checkbox" name="recaptcha" onchange="$('#captcha_vars').toggle('Bind');" {if !empty($recaptcha.public)}checked{/if}> Enable reCAPTCHA verification (require Google account)</label>
+        </div>
+        <div id="captcha_vars" style="display:{if !empty($recaptcha.public)}block{else}none{/if};">
+            <p>You can get your public and private keys here&nbsp;: <a href="https://www.google.com/recaptcha" target="_blank">reCAPTCHA Google</a></p>
+            <div class="form-group">
+                <label for="public_key"><span style="color:green;">Public</span> key</label>
+                <input class="form-control" type="text" id="public_key" name="public_key" value="{$config.recaptcha.public}">
+            </div>
+            <div class="form-group">
+                <label for="private_key"><span style="color:red;">Private</span> key</label>
+                <input class="form-control" type="text" id="private_key" name="private_key" value="{$config.recaptcha.private}">
+            </div>
+        </div>
+    </fieldset>
+
+    <h2>Document</h2>
+    <div class="form-group">
+        <label for="document">Document name</label>
+        <input class="form-control" type="text" id="document" name="document" value="{$config.document}">
+        <p class="help-block">This will replace the text in the header.</p>
+    </div>
+    <p>These fields will add a copyright section in the footer with a link if you specify a URL.</p>
+    <div class="form-group">
+        <label for="name">Copyright</label>
+        <input class="form-control" type="text" id="name" name="name" value="{$config.author.name}">
+    </div>
+    <div class="form-group">
+        <label for="url">Copyright link</label>
+        <input class="form-control" type="text" id="url" name="url" value="{$config.author.url}" placeholder="http://">
+    </div>
+
+    <h2>Page parameters</h2>
+    <div class="form-group">
+        <label for="lang">Page language</label>
+        <input class="form-control" type="text" id="lang" name="lang" value="{$config.page.lang}">
+    </div>
+    <div class="form-group">
+        <label for="charset">Charset</label>
+        <input class="form-control" type="text" id="charset" name="charset" value="{$config.page.charset}">
+        <p class="help-block">We strongly recommand that you keep the "utf8" encoding.</p>
+    </div>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input class="form-control" type="text" id="title" name="title" value="{$config.page.title}">
+    </div>
+    <div class="form-group">
+        <label for="description">Default meta description</label>
+        <input class="form-control" type="text" id="description" name="description" value="{$config.page.description}">
+    </div>
+    <div class="form-group">
+        <label for="keywords">Default meta keywords</label>
+        <input class="form-control" type="text" id="keywords" name="keywords" value="{$config.page.keywords}">
+        <p class="help-block">(comma-separated)</p>
+    </div>
+
+    <h2>Theme</h2>
+    <div class="form-group">
+        <label for="maincolor">Main color</label>
+        <select name="maincolor" id="maincolor" class="form-control">
+            <option value="red" style="color:red;" {if $config.page.maincolor == 'red'}selected{/if}>red</option>
+            <option value="green" style="color:green;" {if $config.page.maincolor == 'green'}selected{/if}>green</option>
+            <option value="blue" style="color:blue;" {if $config.page.maincolor == 'blue'}selected{/if}>blue</option>
+        </select>
+    </div>
+
+    <h2>Analytics</h2>
+    <p>If you want to have some statistics about your visitor traffic, you can add the Google Analytics script in your documentation, so you'll know who came to read it, how much time they spend on it, which pages are the most visited..</p>
+    <fieldset class="bordered">
+        <div class="checkbox">
+            <label><input id="analytics_box" type="checkbox" name="analytics" onchange="$('#analytics_vars').toggle('Bind');" {if !empty($config.analytics)}checked{/if}> Enable Google Analytics (require Google account)</label>
+        </div>
+        <div id="analytics_vars" style="display:{if empty($config.analytics)}none{else}block{/if};">
+            <p>You can get your Tracking ID here&nbsp;: <a href="https://www.google.com/analytics" target="_blank">Google Analytics</a></p>
+            <div class="form-group">
+                <label for="tracker_code">Tracking ID</label>
+                <input class="form-control" type="text" id="tracker_code" name="tracker_code" value="{$config.analytics}" placeholder="UA-XXXXX-Y">
+            </div>
+        </div>
+    </fieldset>
+
+    <p class="text-center"><input type="submit" class="btn btn-success btn-lg" value="Save settings"></p>
+</form>
+
+{/block}

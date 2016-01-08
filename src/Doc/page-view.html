@@ -1,0 +1,8 @@
+{extends "layout.html"}
+
+{block "page-content"}
+<h1>{$data.page_title} {if $admin}<a href="{eval $data.page_edit_url}" class="btn btn-warning btn-xs" title="Edit this page"><span class="glyphicon glyphicon-pencil"></span></a>{/if}</h1>
+<hr>
+<div>{$data.page_content}</div>
+<p style="color:#838383;text-align:right;">Last edit : {$data.page_last_modif|date_format:"%A, %B %e, %Y at %H:%M"}</p>
+{/block}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <title>Debug</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        .cat {
+            text-transform:uppercase;
+            font-size:x-large;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Debug</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="cat">serialize()</div>
+                <pre style="color:black;background:#c6c6c6;">{$serial}</pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="cat">PRINT_R()</div>
+                        <pre style="color:white;background:#3f3f3f;">{$print_r}</pre>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="cat">VAR_EXPORT()</div>
+                        <pre style="color:sienna;background:seashell;">{$var_export}</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="cat">VAR_DUMP()</div>
+                <pre style="color:black;background:khaki;">{$var_dump}</pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

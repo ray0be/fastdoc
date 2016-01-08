@@ -1,0 +1,16 @@
+{extends "layout.html"}
+
+{block "page-header-nav"}{/block}
+{block "page-menu-wide"}{/block}
+
+{block "page-content"}
+<h1>Installation</h1>
+
+<p>Before start using <strong>{$app.name}</strong>, please choose an admin password.</p>
+
+<h2>Administration access</h2>
+<p>Choose a password to secure the platform. It will be required to edit your documents.</p>
+
+{include "Admin/form.password.tpl"}
+
+{/block}
